@@ -16,10 +16,10 @@ const makingImage = galleryItems
 </div>`
   )
   .join("");
+let instance;
 
 gallery.insertAdjacentHTML("afterbegin", makingImage);
-let instance = basicLightbox.create(`
-    <img class="gallery__image" src="">`);
+
 function click(e) {
   e.preventDefault();
   if (e.target.nodeName !== "IMG") {
