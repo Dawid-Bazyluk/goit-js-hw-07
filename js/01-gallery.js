@@ -18,16 +18,22 @@ const makingImage = galleryItems
   .join("");
 
 gallery.insertAdjacentHTML("afterbegin", makingImage);
-
+let instance = basicLightbox.create(`
+    <img class="gallery__image" src="">`);
 function click(e) {
   e.preventDefault();
   if (e.target.nodeName !== "IMG") {
     return console.log(`CLICK IMG!!!`);
   }
-  const instance = basicLightbox.create(`
+  instance = basicLightbox.create(`
     <img class="gallery__image" src=${e.target.dataset.source}>`);
 
   instance.show();
 }
-
+const closingLightBox = (e) => {
+  if (e.code === "Escape" && instance.visible()) {
+    instance.close();
+  }
+};
 gallery.addEventListener("click", click);
+gallery.addEventListener("keydown", closingLightBox);
