@@ -16,6 +16,7 @@ const makingImage = galleryItems
 </div>`
   )
   .join("");
+
 let instance;
 
 gallery.insertAdjacentHTML("afterbegin", makingImage);
@@ -31,7 +32,7 @@ function click(e) {
   instance.show();
 }
 const closingLightBox = (e) => {
-  if (e.code === "Escape" && instance.visible()) {
+  if (e.code === "Escape") {
     instance.close();
   }
 };
